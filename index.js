@@ -1064,6 +1064,17 @@ app.post('/userupdate', (req, res) => {
 });
 
 
+app.get('/activememberbusinessreport', (req, res) => {
+  
+if(req.session.admin)
+{
+  res.render('admin/active_member_business_report.ejs');
+}
+else{
+  res.redirect("/adminlogin");
+}
+});
+
 
 app.get('/test/bond',(req,res)=>{
   res.render('test/index.ejs');
