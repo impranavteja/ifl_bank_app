@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>Employee Details</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/img/fav-logo.png">
+    <!-- Fontfamily -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;1,400&display=swap">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+
+  </head>
+  <body>
+    <div class="main-wrapper"><%- include('admin_menu.ejs') %> 
+        <div class="page-wrapper">
+        <div class="content container-fluid">
+          <!-- Page Header -->
+          <div class="page-header">
+            <div class="row">
+              <div class="col-sm-12">
+                <h3 class="page-title"> Employee DETAILS</h3>
+                <ul class="breadcrumb">
+                  <li class="breadcrumb-item">
+                    <a href="/admindashboard">Dashboard</a>
+                  </li>
+                  <li class="breadcrumb-item active">Employee Details List</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- /Page Header -->
+          <!-- Overview Section -->
+          <div class="row"> <div class="col-sm-12"> <div class="card card-table"> <div class="card-body">
+
+            <div class="page-header">
+                <div class="row align-items-center">
+                  <div class="col">
+                    <h3 class="page-title">Employees</h3> 
+                  </div>
+                  <div class="col-auto text-end float-end ms-auto download-grp">
+                    <button  class="btn btn-outline-primary me-2" onclick="exporttoxl();"><i class="fas fa-download"></i> Download</button>
+                    <a href="/employeecreation" class="btn btn-primary"><i class="fas fa-plus"></i></a> 
+                  </div>
+                </div>
+              </div>
+              
+              <div class="table-responsive">
+                <table class="table table-hover table-center mb-0" id="employeedetails">
+                  <thead>
+                    <tr>
+                      <th>EMP ID</th>
+                      <th>Name</th>
+                      <th>Branch</th>
+                      <th>Salary</th>
+                      <th>DOJ</th>
+                      <th>Designation</th>
+                      <th class="text-end">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% employees.forEach(function(employee) { %>
+
+                        <tr>
+                          <td><%= employee.emp_id %></td>
+                          <td><%= employee.emp_name %></td>
+                          <td><%= employee.emp_branch %></td>
+                          <td><%= employee.emp_salary %></td>
+                          <td><%= employee.emp_doj %></td>
+                          <td><%= employee.emp_designation %></td>
+                      
+                          <td class="text-end">
+                            <div class="actions">
+                              <a href="/employeeedit?id=<%= employee.emp_id %>" class="btn btn-sm bg-success-light me-2">
+                                <i class="fas fa-pen"></i>
+                              </a>
+                            </div>
+                          </td>
+                        </tr>
+                      
+                      <% }) %>
+                    <!-- More rows here -->
+                  </tbody>
+                </table>
+              </div>
+              
+            </div>
+          </div>
+
+        </div> </div>
+        
+        
+        </div>
+        </div>
+
+          <!-- /Main Wrapper -->
+          <!-- jQuery -->
+          <script src="assets/js/jquery-3.6.0.min.js"></script>
+          <!-- Bootstrap Core JS -->
+          <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+          <!-- Slimscroll JS -->
+          <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+          <!-- Select2 JS -->
+          <script src="assets/plugins/select2/js/select2.min.js"></script>
+          <!-- Custom JS -->
+          <script src="assets/js/script.js"></script>
+          <!-- Form Validation JS -->
+          <script src="assets/js/form-validation.js"></script>
+          <!-- AADHAAR SPACING-->
+
+          <script src=
+          "//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js">
+          </script>
+          <script src=
+          "//cdn.rawgit.com/rainabba/jquery-table2excel/1.1.0/dist/jquery.table2excel.min.js">
+          </script>
+          <script>
+          function exporttoxl(){
+               $('#employeedetails').table2excel({ filename: "Employeedetails", fileext: ".xls"});
+          }
+          </script>
+
+  </body>
+</html>

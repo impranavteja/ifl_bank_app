@@ -1,0 +1,52 @@
+<div id="top-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-top">
+    <div class="modal-content">
+    <div class="modal-header">
+    <h4 class="modal-title" id="topModalLabel" style="color: red;"><b>Internet Disconnected</b></h4>
+    <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+    </div>
+    <div class="modal-body">
+    <h5><b>Check your Internet connection</b></h5>
+    <p>if your internet is working fine . Please contact your admin</p>
+
+    <!-- <p><code><b>waiting for network</b></code></p> -->
+
+    
+
+    </div>
+    <div class="modal-footer">
+    <!-- <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+    <button type="button" class="btn btn-primary">Save changes</button> -->
+    </div>
+    </div>
+    </div>
+</div>
+
+<script>
+    // Function to check internet connection and display warning modal
+    function checkInternetConnection() {
+      fetch("/networkstatus", { method: 'HEAD' })
+        .then(response => {
+            if (response.status === 200)  {
+            // Internet is disconnected, show the modal
+            console.log("Internet is connected");
+            const modal = document.getElementById("top-modal");
+            $('#top-modal').modal('hide');
+          } else {
+            console.log("Internet is disconnected");
+            // Internet is connected, hide the modal
+            const modal = document.getElementById("top-modal");
+            $('#top-modal').modal('show');
+          }
+        })
+        .catch(error => {
+          // Internet is disconnected, show the modal
+            console.log("Internet is disconnected");
+          const modal = document.getElementById("top-modal");
+          $('#top-modal').modal('show');
+        });
+    }
+
+    // Check the internet connection periodically
+    setInterval(checkInternetConnection, 2000); // Check every 2 seconds
+  </script>

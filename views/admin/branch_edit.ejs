@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>EDIT BRANCH DETAILS</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/img/fav-logo.png">
+    <!-- Fontfamily -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;1,400&display=swap">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+  </head>
+  <body>
+    <div class="main-wrapper"><%- include('admin_menu.ejs') %> <div class="page-wrapper">
+        <div class="content container-fluid">
+          <!-- Page Header -->
+          <div class="page-header">
+            <div class="row">
+              <div class="col-sm-12">
+                <h3 class="page-title">EDIT BRANCH DETAILS FORM</h3>
+                <ul class="breadcrumb">
+                  <li class="breadcrumb-item">
+                    <a href="/admindashboard">Dashboard</a>
+                  </li>
+                  <li class="breadcrumb-item active">Edit Branch Details Form</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- /Page Header -->
+          <!-- Overview Section -->
+          <div class="row"> <div class="col-md-12"> <div class="card">
+
+          <div class="card-header">
+            <h5 class="card-title">Branch Details Form</h5>
+          </div>
+        
+          <div class="card-body">
+          
+            <form action="/branchupdate" method="POST">
+              <div class="row">
+                <div class="col-xl-6">
+                  <h5 class="card-title">Branch Details</h5>
+                  <div class="form-group row">
+                    <label class="col-lg-3 col-form-label">Branch Code</label>
+                    <div class="col-lg-9">
+                      <input type="text" name="branch_code" class="form-control" value="<%= branch[0].branch_id %>" disabled="disabled">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-lg-3 col-form-label">Branch Name</label>
+                    <div class="col-lg-9">
+                      <input type="text" name="branch_name" class="form-control" value="<%= branch[0].branch_name %>">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-lg-3 col-form-label">Address</label>
+                    <div class="col-lg-9">
+                      <textarea name="branch_address" rows="4" class="form-control"><%= branch[0].branch_address %></textarea>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-lg-3 col-form-label">District</label>
+                    <div class="col-lg-9">
+                      <input type="text" name="branch_district" class="form-control" value="<%= branch[0].branch_district %>">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-lg-3 col-form-label">Pincode</label>
+                    <div class="col-lg-9">
+                      <input type="text" name="branch_pincode" class="form-control" value="<%= branch[0].branch_pincode %>">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-6">
+                  <h5 class="card-title">Contact Details</h5>
+                  <div class="form-group row">
+                    <label class="col-lg-3 col-form-label">State</label>
+                    <div class="col-lg-9">
+                      <input type="text" name="branch_state" class="form-control" value="<%= branch[0].branch_state %>">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-lg-3 col-form-label">Phone</label>
+                    <div class="col-lg-9">
+                      <input type="text" name="branch_phone" class="form-control" value="<%= branch[0].branch_phone %>">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-lg-3 col-form-label">Mobile</label>
+                    <div class="col-lg-9">
+                      <input type="text" name="branch_mobile" class="form-control" value="<%= branch[0].branch_mobile %>">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-lg-3 col-form-label">Email</label>
+                    <div class="col-lg-9">
+                      <input type="email" name="branch_email" class="form-control" value="<%= branch[0].branch_email %>">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-lg-3 col-form-label">Manager</label>
+                    <div class="col-lg-9">
+                      <input type="text" name="branch_manager" class="form-control" value="<%= branch[0].branch_manager %>">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="text-end">
+                <button type="submit" class="btn btn-primary">Update</button>
+              </div>
+            </form>
+            
+          
+          </div>
+        
+        </div>
+            </div>
+
+        </div> </div>
+
+          <!-- /Main Wrapper -->
+          <!-- jQuery -->
+          <script src="assets/js/jquery-3.6.0.min.js"></script>
+          <!-- Bootstrap Core JS -->
+          <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+          <!-- Slimscroll JS -->
+          <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+          <!-- Select2 JS -->
+          <script src="assets/plugins/select2/js/select2.min.js"></script>
+          <!-- Custom JS -->
+          <script src="assets/js/script.js"></script>
+          <!-- Form Validation JS -->
+          <script src="assets/js/form-validation.js"></script>
+          <!-- AADHAAR SPACING-->
+          <script>
+            document.querySelector('#aadharid').addEventListener('keydown', (e) => {
+              e.target.value = e.target.value.replace(/(\d{4})(\d+)/g, '$1 $2')
+            })
+            /* Jquery */
+            $('#aadharid').keyup(function() {
+              $(this).val($(this).val().replace(/(\d{4})(\d+)/g, '$1 $2'))
+            });
+            document.querySelector('#aadharid1').addEventListener('keydown', (e) => {
+              e.target.value = e.target.value.replace(/(\d{4})(\d+)/g, '$1 $2')
+            })
+            /* Jquery */
+            $('#aadharid1').keyup(function() {
+              $(this).val($(this).val().replace(/(\d{4})(\d+)/g, '$1 $2'))
+            });
+
+            function getProsperName() {
+              const activemember = document.getElementById('prosper_code').value;
+              fetch(`/getprosperName/${activemember}`).then(response => response.json()).then(data => {
+                document.getElementById('prosper_name').value = data[0]['member_name'];
+              }).catch(error => {
+                console.error("Error fetching stored timestamp:", error);
+              });
+            }
+
+            function getAge() {
+              const dob = document.getElementById("member_dob").value;
+              const dobDate = new Date(dob);
+              const diff = Date.now() - dobDate.getTime();
+              const age = new Date(diff);
+              const calculatedAge = Math.abs(age.getUTCFullYear() - 1970);
+              document.getElementById("member_age").value = calculatedAge;
+            }
+
+          </script>
+  </body>
+</html>

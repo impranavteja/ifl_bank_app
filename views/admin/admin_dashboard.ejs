@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>IFL Branch dashboard</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/img/fav-logo.png">
+    <!-- Fontfamily -->
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;1,400&display=swap">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+  </head>
+  <body>
+	<%- include('internet_warning.ejs') %>
+    <div class="main-wrapper"><%- include('admin_menu.ejs') %> <div class="page-wrapper">
+        <div class="content container-fluid">
+          <!-- Page Header -->
+          <div class="page-header">
+            <div class="row">
+              <div class="col-sm-12">
+                <h3 class="page-title">Welcome <b><%= rows[0].role %>! </b>
+                </h3>
+                <ul class="breadcrumb">
+                  <li class="breadcrumb-item active">Admin Dashboard</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- /Page Header -->
+          <!-- Overview Section -->
+          <div class="row">
+            <div class="col-xl-3 col-sm-6 col-12 d-flex">
+              <div class="card bg-comman w-100">
+                <div class="card-body">
+                  <div class="db-widgets d-flex justify-content-between align-items-center">
+                    <div class="db-info">
+                      <h6>Active Members</h6>
+                      <h3>50</h3>
+                    </div>
+                    <div class="db-icon">
+                      <img src="assets/img/icons/dash-icon-01.svg" alt="Dashboard Icon">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12 d-flex">
+              <div class="card bg-comman w-100">
+                <div class="card-body">
+                  <div class="db-widgets d-flex justify-content-between align-items-center">
+                    <div class="db-info">
+                      <h6>Members</h6>
+                      <h3>68</h3>
+                    </div>
+                    <div class="db-icon">
+                      <img src="assets/img/icons/dash-icon-02.svg" alt="Dashboard Icon">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12 d-flex">
+              <div class="card bg-comman w-100">
+                <div class="card-body">
+                  <div class="db-widgets d-flex justify-content-between align-items-center">
+                    <div class="db-info">
+                      <h6>Branches</h6>
+                      <h3>5</h3>
+                    </div>
+                    <div class="db-icon">
+                      <img src="assets/img/icons/dash-icon-03.svg" alt="Dashboard Icon">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12 d-flex">
+              <div class="card bg-comman w-100">
+                <div class="card-body">
+                  <div class="db-widgets d-flex justify-content-between align-items-center">
+                    <div class="db-info">
+                      <h6>Today Revenue</h6>
+                      <h3>50,5000</h3>
+                    </div>
+                    <div class="db-icon">
+                      <img src="assets/img/icons/dash-icon-04.svg" alt="Dashboard Icon">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /Overview Section -->
+          <div class="row">
+            <div class="col-md-12 col-lg-6">
+              <!-- Revenue Chart -->
+              <div class="card card-chart">
+                <div class="card-header">
+                  <div class="row align-items-center">
+                    <div class="col-6">
+                      <h5 class="card-title">Overview</h5>
+                    </div>
+                    <div class="col-6">
+                      <ul class="chart-list-out">
+                        <li>
+                          <span class="circle-blue"></span>Member
+                        </li>
+                        <li>
+                          <span class="circle-green"></span>Active member
+                        </li>
+                        <li class="star-menus">
+                          <a href="javascript:;">
+                            <i class="fas fa-ellipsis-v"></i>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div id="apexcharts-area"></div>
+                </div>
+              </div>
+              <!-- /Revenue Chart -->
+            </div>
+            <div class="col-md-12 col-lg-6">
+              <!-- Student Chart -->
+              <div class="card card-chart">
+                <div class="card-header">
+                  <div class="row align-items-center">
+                    <div class="col-6">
+                      <h5 class="card-title">Yearly Revenue Analysis</h5>
+                    </div>
+                    <div class="col-6">
+                      <ul class="chart-list-out">
+                        <li>
+                          <span class="circle-blue"></span>2022
+                        </li>
+                        <li>
+                          <span class="circle-green"></span>2023
+                        </li>
+                        <li class="star-menus">
+                          <a href="javascript:;">
+                            <i class="fas fa-ellipsis-v"></i>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <div id="bar"></div>
+                  </div>
+                </div>
+                
+                <!-- /Student Chart -->
+              </div>
+              
+            </div>
+            <!-- /Page Wrapper -->
+          </div>
+
+     <div class="row">
+  <% branches.forEach(function(branch, index) { %>
+    <div class="col-xl-3 col-sm-6 col-12 d-flex">
+      <div class="card bg-comman w-100">
+        <div class="card-body">
+          <div class="db-widgets d-flex justify-content-between align-items-center">
+            <div class="db-info">
+              <h6>Branch Name: <%= branch.id %></h6>
+
+               <h3>Status: <span style="color: <%= branch.status === 1 ? 'green' : 'red' %>;"><%= branch.status === 1 ? 'Active' : 'Inactive' %></span></h3>
+               <% if (branch.status === 1) { %>
+                <small>Timestamp: <%= branch.in_time %></small>
+
+              <% } %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% }); %>
+</div>
+
+        </div>
+        <!-- /Main Wrapper -->
+        <!-- jQuery -->
+        <script src="assets/js/jquery-3.6.0.min.js"></script>
+        <!-- Bootstrap Core JS -->
+        <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Slimscroll JS -->
+        <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+        <!-- Custom JS -->
+        <script src="assets/js/script.js"></script>
+        <!-- Chart JS -->
+        <script src="assets/plugins/apexchart/apexcharts.min.js"></script>
+        <script src="assets/plugins/apexchart/chart-data.js"></script>
+  </body>
+</html>

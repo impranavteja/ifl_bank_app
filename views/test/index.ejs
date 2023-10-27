@@ -1,0 +1,213 @@
+<!DOCTYPE html> 
+<html> 
+
+<head> 
+	<title> 
+		Print the content of a div 
+	</title> 
+    <base href="/">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;1,400&display=swap">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+	<!-- Script to print the content of a div -->
+	<script> 
+		function printDiv() { 
+			var divContents = document.getElementById("invoices_preview").innerHTML;
+var a = window.open('', '', 'height=1080, width=900');
+a.document.write('<html>');
+a.document.write('<head><title>Print Invoice</title>'); // Add a title to your printed page
+a.document.write('<link rel="stylesheet" href="https://preschool.dreamguystech.com/template/assets/plugins/bootstrap/css/bootstrap.min.css">');
+a.document.write('<link rel="stylesheet" href="https://preschool.dreamguystech.com/template/assets/plugins/fontawesome/css/fontawesome.min.css">');
+a.document.write('<link rel="stylesheet" href="https://preschool.dreamguystech.com/template/assets/plugins/fontawesome/css/all.min.css">');
+a.document.write('<link rel="stylesheet" href="https://preschool.dreamguystech.com/template/assets/css/style.css">');
+a.document.write('</head>');
+a.document.write('<body>');
+a.document.write(divContents);
+a.document.write('</body></html>');
+// a.document.close();
+// a.print();
+// a.close();
+setTimeout(function(){a.print();
+a.close()},1000);
+
+		} 
+	</script> 
+</head> 
+
+<body style="text-align:center;"> 
+	<div class="invoices_preview" id="invoices_preview">
+        <div class="row justify-content-center">
+        <div class="col-lg-12">
+        <div class="card invoice-info-card">
+        <div class="card-body pb-0">
+        <div class="invoice-item invoice-item-one">
+        <div class="row">
+        <div class="col-md-6">
+        <div class="invoice-logo">
+        <img src="assets/img/logo.png" alt="logo">
+        </div>
+        </div>
+        <div class="col-md-6">
+        <div class="invoice-info">
+        <div class="invoice-head">
+        <h2 class="text-primary">Invoice</h2>
+        <p>Invoice Number : In983248782</p>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        
+        <div class="invoice-item invoice-item-bg">
+        <div class="invoice-circle-img">
+        <img src="assets/img/invoice-circle1.png" alt class="invoice-circle1">
+        <img src="assets/img/invoice-circle2.png" alt class="invoice-circle2">
+        </div>
+        <div class="row">
+        <div class="col-lg-4 col-md-12">
+        <div class="invoice-info">
+        <strong class="customer-text-one">Billed to</strong>
+        <h6 class="invoice-name">Customer Name</h6>
+        <p class="invoice-details invoice-details-two">
+        9087484288 <br>
+        Address line 1, <br>
+        Address line 2 <br>
+        Zip code ,City - Country
+        </p>
+        </div>
+        </div>
+        <div class="col-lg-4 col-md-12">
+        <div class="invoice-info">
+        <strong class="customer-text-one">Invoice From</strong>
+        <h6 class="invoice-name">Company Name</h6>
+        <p class="invoice-details invoice-details-two">
+        9087484288 <br>
+        Address line 1, <br>
+        Address line 2 <br>
+        Zip code ,City - Country
+        </p>
+        </div>
+        </div>
+        <div class="col-lg-4 col-md-12">
+        <div class="invoice-info invoice-info-one border-0">
+        <p>Issue Date : 27 Jul 2022</p>
+        <p>Due Date : 27 Aug 2022</p>
+        <p>Due Amount : $ 1,54,22 </p>
+        <p>Recurring Invoice : 15 Months</p>
+        <p class="mb-0">PO Number : 54515454</p>
+        </div>
+        </div>
+        </div>
+        </div>
+        
+        
+        <div class="invoice-item invoice-table-wrap">
+        <div class="row">
+        <div class="col-md-12">
+        <div class="table-responsive">
+        <table class="invoice-table table table-center mb-0">
+        <thead>
+        <tr>
+        <th>Description</th>
+        <th>Category</th>
+        <th>Rate/Item</th>
+        <th>Quantity</th>
+        <th>Discount (%)</th>
+        <th class="text-end">Amount</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>Dell Laptop</td>
+        <td>Laptop</td>
+        <td>$1,110</td>
+        <th>2</th>
+        <th>2%</th>
+        <td class="text-end">$400</td>
+        </tr>
+        <tr>
+        <td>HP Laptop</td>
+        <td>Laptop</td>
+        <td>$1,500</td>
+        <th>3</th>
+        <th>6%</th>
+        <td class="text-end">$3,000</td>
+        </tr>
+        <tr>
+        <td>Apple Ipad</td>
+        <td>Ipad</td>
+        <td>$11,500</td>
+        <th>1</th>
+        <th>10%</th>
+        <td class="text-end">$11,000</td>
+        </tr>
+        </tbody>
+        </table>
+        </div>
+        </div>
+        </div>
+        </div>
+        
+        <div class="row align-items-center justify-content-center">
+        <div class="col-lg-6 col-md-6">
+        <div class="invoice-payment-box">
+        <h4>Payment Details</h4>
+        <div class="payment-details">
+        <p>Debit Card XXXXXXXXXXXX-2541 HDFC Bank</p>
+        </div>
+        </div>
+        </div>
+        <div class="col-lg-6 col-md-6">
+        <div class="invoice-total-card">
+        <div class="invoice-total-box">
+        <div class="invoice-total-inner">
+        <p>Taxable <span>$6,660.00</span></p>
+        <p>Additional Charges <span>$6,660.00</span></p>
+        <p>Discount <span>$3,300.00</span></p>
+        <p class="mb-0">Sub total <span>$3,300.00</span></p>
+        </div>
+        <div class="invoice-total-footer">
+        <h4>Total Amount <span>$143,300.00</span></h4>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        <div class="invoice-sign-box">
+        <div class="row">
+        <div class="col-lg-8 col-md-8">
+        <div class="invoice-terms">
+        <h6>Notes:</h6>
+        <p class="mb-0">Enter customer notes or any other details</p>
+        </div>
+        <div class="invoice-terms mb-0">
+        <h6>Terms and Conditions:</h6>
+        <p class="mb-0">Enter customer notes or any other details</p>
+        </div>
+        </div>
+        <div class="col-lg-4 col-md-4">
+        <div class="invoice-sign text-end">
+        <img class="img-fluid d-inline-block" src="assets/img/signature.png" alt="sign">
+        <span class="d-block">Harristemp</span>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        
+        </div>
+    
+	<input type="button" value="click" onclick="printDiv()"> 
+</body> 
+
+</html>					 
