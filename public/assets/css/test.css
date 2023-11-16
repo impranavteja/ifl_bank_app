@@ -1,0 +1,43 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #8f8f8f; /* Grey background */
+}
+
+#white-sheet {
+background-color: #ffffff; /* White sheet */
+padding: 20px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+width: 210mm;
+height: 297mm;
+box-sizing: border-box;
+max-width: 100%; /* Adjust the maximum width of the white sheet */
+margin: 20mm 0; /* Add space at the top and bottom */
+}
+
+br {
+display: block;
+margin: 10px 0;
+}
+p{
+font-family: 'Inter', sans-serif;
+font-weight: 500;
+margin: 0;
+font-size: smaller;
+
+}
+
+.container, 
+.row {
+margin: 0;
+padding: 1;
+}
+.col-sm{
+float: left;
+}
+
+</style>

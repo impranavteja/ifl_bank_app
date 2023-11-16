@@ -3,9 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <title>Branch Details</title>
-  
-       <!-- Favicon -->
+    <title>ACTIVE MEMBER BUSINESS REPORT</title>
+    <!-- Favicon -->
     <link rel="shortcut icon" href="assets/img/fav-logo.png">
     <!-- Fontfamily -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;1,400&display=swap">
@@ -18,100 +17,102 @@
     <link rel="stylesheet" href="assets/css/style.css">
   </head>
   <body>
-    <div class="main-wrapper"><%- include('admin_menu.ejs') %> 
-        <div class="page-wrapper">
+    <div class="main-wrapper"><%- include('admin_menu.ejs') %> <div class="page-wrapper">
         <div class="content container-fluid">
           <!-- Page Header -->
           <div class="page-header">
             <div class="row">
               <div class="col-sm-12">
-                <h3 class="page-title"> BRANCH DETAILS</h3>
+                <h3 class="page-title">ACTIVE MEMBER BUSINESS REPORT</h3>
                 <ul class="breadcrumb">
                   <li class="breadcrumb-item">
                     <a href="/branchdashboard">Dashboard</a>
                   </li>
-                  <li class="breadcrumb-item active">Branch Details List</li>
+                  <li class="breadcrumb-item active">ACTIVE MEMBER BUSINESS REPORT Form</li>
                 </ul>
               </div>
             </div>
           </div>
           <!-- /Page Header -->
           <!-- Overview Section -->
-          <div class="row"> 
-       <div class="col-sm-12"> 
-            <div class="card card-table"> 
-                <div class="card-body">     
-          <div class="page-header">
-            <div class="row align-items-center">
-              <div class="col">
-                <h3 class="page-title"><b>Branches</b></h3>
-              </div>
-              <div class="col-auto text-end float-end ms-auto download-grp">
-                <button  class="btn btn-outline-primary me-2" onclick="exporttoxl();"><i class="fas fa-download"></i> Download</button>
-                <a href="/branchcreation" class="btn btn-primary"><i class="fas fa-plus"></i></a>
-              </div>
-            </div>
-          </div>
-      
-          <div class="table-responsive">
-            <table class="table table-hover table-center mb-0" id="branchdetails">
-              <thead>
-                <tr>
-                  <th>Branch Code</th>
-                  <th>Branch Name</th>
-                  <th>Address</th>
-                  <th>Manager</th>
-                  <th>District</th>
-                  <th>State</th>
-                  <th>Pincode</th>
-                  <th>Phone</th>
-                  <th>Mobile</th>
-                  <th class="text-end">Action</th>
-                </tr>
-              </thead>
-              <tbody> 
+          <div class="row"> <div class="col-md-12"> <div class="card">
 
-                <% Branchdetails.forEach(function(branch) { %>
-            
-                  <tr>
-                    <td><%= branch.branch_id %></td>
-                    <td><%= branch.branch_name %></td>
-                    <td><%= branch.branch_address %></td>
-                    <td><%= branch.branch_manager %></td>
-                    <td><%= branch.branch_district %></td>
-                    <td><%= branch.branch_state %></td>
-                    <td><%= branch.branch_pincode %></td>
-                    <td><%= branch.branch_phone %></td> 
-                    <td><%= branch.branch_mobile %></td>
-            
-                    <!-- Action buttons -->
-                    <td class="text-end">
-                        <div class="actions">
-                            <a href="/branchedit?id=<%= branch.branch_id%>" class="btn btn-sm bg-success-light me-2">
-                                <i class="fas fa-pen"></i>
-                              </a>
-                        </div>
-                      </td>
-    
-            
-                  </tr>
-            
-                <% }) %>
-            
-              </tbody>
-            </table>
+          <div class="card-header">
+            <h5 class="card-title">Business Report</h5>
           </div>
-      
-        </div>
-      </div>
-      
-    </div> 
+        
+          <div class="card-body">
+          
+            <form action="/branchcreation" method="POST">
+            
+              <div class="row">
+             <div class="col-xl-6">
+
+  <div class="form-group row">
+    <label class="col-lg-3 col-form-label">Branch</label>
+    <div class="col-lg-9">
+      <select name="branch" class="form-control">
+        <option>Select Branch</option>
+        <% branchdetails.forEach(function(branch) { %>
+          <option value="<%= branch.branch_id %>">
+            <%= branch.branch_id %>
+          </option>
+        <% }) %>
+      </select>
+    </div>  
+  </div>
+
+  <div class="form-group row">
+    <label class="col-lg-3 col-form-label">Report Type</label>
+    <div class="col-lg-9">
+      <select name="report_type" class="form-control">
+        <option>Select Report</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-lg-3 col-form-label">Payout Date</label>
+    <div class="col-lg-9">
+      <input type="date" name="payout_date" class="form-control">
+    </div>
+  </div>
+
+ 
 
 </div>
+                  
+                  <div class="col-xl-6">
+                
+                    <div class="form-group row">
+                      <label class="col-lg-3 col-form-label">From Date</label>
+                      <div class="col-lg-9">
+                        <input type="date" name="from_date" class="form-control"> 
+                      </div>
+                    </div>
+                  
+                    <div class="form-group row">
+                      <label class="col-lg-3 col-form-label">To Date</label>
+                      <div class="col-lg-9">
+                        <input type="date" name="to_date" class="form-control">
+                      </div>
+                    </div>
+                  
+                  </div>
+              </div>
         
+              <div class="text-end">
+                <a href="/activememberpayoutlist" class="btn btn-primary">Show Records</a>
+              </div>
+        
+            </form>
+          
+          </div>
         
         </div>
-        </div>
+            </div>>
+
+        </div> </div>
 
           <!-- /Main Wrapper -->
           <!-- jQuery -->
@@ -161,17 +162,6 @@
               document.getElementById("member_age").value = calculatedAge;
             }
 
-          </script>
-          <script src=
-          "//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js">
-          </script>
-          <script src=
-          "//cdn.rawgit.com/rainabba/jquery-table2excel/1.1.0/dist/jquery.table2excel.min.js">
-          </script>
-          <script>
-          function exporttoxl(){
-               $('#branchdetails').table2excel({ filename: "BranchDetails", fileext: ".xls"});
-          }
           </script>
   </body>
 </html>

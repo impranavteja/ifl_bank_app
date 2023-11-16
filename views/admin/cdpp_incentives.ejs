@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <title>Branch Details</title>
+    <title>IPP Incentives </title>
   
        <!-- Favicon -->
     <link rel="shortcut icon" href="assets/img/fav-logo.png">
@@ -25,12 +25,12 @@
           <div class="page-header">
             <div class="row">
               <div class="col-sm-12">
-                <h3 class="page-title"> BRANCH DETAILS</h3>
+                <h3 class="page-title"> IPP Incentives DETAILS</h3>
                 <ul class="breadcrumb">
                   <li class="breadcrumb-item">
                     <a href="/branchdashboard">Dashboard</a>
                   </li>
-                  <li class="breadcrumb-item active">Branch Details List</li>
+                  <li class="breadcrumb-item active">IPP Incentives Details List</li>
                 </ul>
               </div>
             </div>
@@ -44,7 +44,7 @@
           <div class="page-header">
             <div class="row align-items-center">
               <div class="col">
-                <h3 class="page-title"><b>Branches</b></h3>
+                <h3 class="page-title"><b>IPP Incentives</b></h3>
               </div>
               <div class="col-auto text-end float-end ms-auto download-grp">
                 <button  class="btn btn-outline-primary me-2" onclick="exporttoxl();"><i class="fas fa-download"></i> Download</button>
@@ -57,37 +57,28 @@
             <table class="table table-hover table-center mb-0" id="branchdetails">
               <thead>
                 <tr>
-                  <th>Branch Code</th>
-                  <th>Branch Name</th>
-                  <th>Address</th>
-                  <th>Manager</th>
-                  <th>District</th>
-                  <th>State</th>
-                  <th>Pincode</th>
-                  <th>Phone</th>
-                  <th>Mobile</th>
+                  <th>Rank Code</th>
+                  <th>CDPP-75 </th>
+                  <th>CDPP-84</th>
+                  <th>CDPP-108</th>
+
                   <th class="text-end">Action</th>
                 </tr>
               </thead>
               <tbody> 
 
-                <% Branchdetails.forEach(function(branch) { %>
+                <% cdpp_incentives.forEach(function(cdpp) { %>
             
                   <tr>
-                    <td><%= branch.branch_id %></td>
-                    <td><%= branch.branch_name %></td>
-                    <td><%= branch.branch_address %></td>
-                    <td><%= branch.branch_manager %></td>
-                    <td><%= branch.branch_district %></td>
-                    <td><%= branch.branch_state %></td>
-                    <td><%= branch.branch_pincode %></td>
-                    <td><%= branch.branch_phone %></td> 
-                    <td><%= branch.branch_mobile %></td>
+                    <td><%= cdpp.rank_code %></td>
+                    <td><%= cdpp.CDPP_75 %></td>
+                    <td><%= cdpp.CDPP_84 %></td>
+                    <td><%= cdpp.CDPP_108 %></td>
             
                     <!-- Action buttons -->
                     <td class="text-end">
                         <div class="actions">
-                            <a href="/branchedit?id=<%= branch.branch_id%>" class="btn btn-sm bg-success-light me-2">
+                            <a href="/cdpp_incentives_edit?id=<%= cdpp.rank_code%>" class="btn btn-sm bg-success-light me-2">
                                 <i class="fas fa-pen"></i>
                               </a>
                         </div>
@@ -127,41 +118,6 @@
           <!-- Form Validation JS -->
           <script src="assets/js/form-validation.js"></script>
           <!-- AADHAAR SPACING-->
-          <script>
-            document.querySelector('#aadharid').addEventListener('keydown', (e) => {
-              e.target.value = e.target.value.replace(/(\d{4})(\d+)/g, '$1 $2')
-            })
-            /* Jquery */
-            $('#aadharid').keyup(function() {
-              $(this).val($(this).val().replace(/(\d{4})(\d+)/g, '$1 $2'))
-            });
-            document.querySelector('#aadharid1').addEventListener('keydown', (e) => {
-              e.target.value = e.target.value.replace(/(\d{4})(\d+)/g, '$1 $2')
-            })
-            /* Jquery */
-            $('#aadharid1').keyup(function() {
-              $(this).val($(this).val().replace(/(\d{4})(\d+)/g, '$1 $2'))
-            });
-
-            function getProsperName() {
-              const activemember = document.getElementById('prosper_code').value;
-              fetch(`/getprosperName/${activemember}`).then(response => response.json()).then(data => {
-                document.getElementById('prosper_name').value = data[0]['member_name'];
-              }).catch(error => {
-                console.error("Error fetching stored timestamp:", error);
-              });
-            }
-
-            function getAge() {
-              const dob = document.getElementById("member_dob").value;
-              const dobDate = new Date(dob);
-              const diff = Date.now() - dobDate.getTime();
-              const age = new Date(diff);
-              const calculatedAge = Math.abs(age.getUTCFullYear() - 1970);
-              document.getElementById("member_age").value = calculatedAge;
-            }
-
-          </script>
           <script src=
           "//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js">
           </script>

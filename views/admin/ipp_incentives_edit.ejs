@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>IPP Incentives DETAILS EDIT</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/img/fav-logo.png">
+    <!-- Fontfamily -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;1,400&display=swap">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+  </head>
+  <body>
+    <div class="main-wrapper"><%- include('admin_menu.ejs') %> <div class="page-wrapper">
+        <div class="content container-fluid">
+          <!-- Page Header -->
+          <div class="page-header">
+            <div class="row">
+              <div class="col-sm-12">
+                <h3 class="page-title">EDIT IPP Incentives DETAILS</h3>
+                <ul class="breadcrumb">
+                  <li class="breadcrumb-item">
+                    <a href="/admindashboard">Dashboard</a>
+                  </li>
+                  <li class="breadcrumb-item active">Edit IPP Incentives DETAILS</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- /Page Header -->
+          <!-- Overview Section -->
+          <div class="row"> <div class="col-md-12"> <div class="card">
+
+          <div class="card-header">
+            <h5 class="card-title"> IPP Incentives DETAILS</h5>
+          </div>
+        
+          <div class="card-body">
+          
+            <form action="/ipp_incentives_edit" method="POST">
+              <div class="row">
+                <div class="col-xl-6">
+                  <h5 class="card-title">IPP Incentives DETAILS</h5>
+                  <div class="form-group row">
+                    <label class="col-lg-3 col-form-label">Rank Code</label>
+                    <div class="col-lg-9">
+                        <input type="hidden" name="rank_code" class="form-control" value="<%= ipp[0].rank_code %>" >
+                      
+                        <input type="text" name="rank_code" class="form-control" value="<%= ipp[0].rank_code %>" disabled="disabled">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-lg-3 col-form-label">Tenure</label>
+                    <div class="col-lg-9">
+                      <input type="text" name="tenure" class="form-control" value="<%= ipp[0].tenure %>">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-lg-3 col-form-label">Percentage</label>
+                    <div class="col-lg-9">
+                      <input type="text" name="percentage" class="form-control" value="<%= ipp[0].percentage %>">
+                    </div>
+                  </div>
+                </div>
+        
+              </div>
+              <div class="text-end">
+                <button type="submit" class="btn btn-primary">Update</button>
+              </div>
+            </form>
+            
+          
+          </div>
+        
+        </div>
+            </div>
+
+        </div> </div>
+
+          <!-- /Main Wrapper -->
+          <!-- jQuery -->
+          <script src="assets/js/jquery-3.6.0.min.js"></script>
+          <!-- Bootstrap Core JS -->
+          <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+          <!-- Slimscroll JS -->
+          <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+          <!-- Select2 JS -->
+          <script src="assets/plugins/select2/js/select2.min.js"></script>
+          <!-- Custom JS -->
+          <script src="assets/js/script.js"></script>
+          <!-- Form Validation JS -->
+          <script src="assets/js/form-validation.js"></script>
+
+  </body>
+</html>

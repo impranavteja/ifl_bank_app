@@ -26,7 +26,31 @@
             <!-- Header Right Menu -->
             <ul class="nav user-menu">
               <li class="nav-item dropdown has-arrow">
+                <button type="button" class="btn btn-primary mt-1" data-bs-toggle="modal" data-bs-target="#logout-modal">Standard Modal</button>
                 <a href="/adminlogout">
+                  <div id="logout-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="standard-modalLabel" aria-hidden="true">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h4 class="modal-title" id="standard-modalLabel">Modal Heading</h4>
+													<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+												</div>
+												<div class="modal-body">
+													<h6>Text in a modal</h6>
+													<p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+													<hr>
+													<h6>Overflowing text to show scroll behavior</h6>
+													<p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+													<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+													<p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+													<button type="button" class="btn btn-primary">Save changes</button>
+												</div>
+											</div><!-- /.modal-content -->
+										</div><!-- /.modal-dialog -->
+									</div>
                   <i class="fas fa-sign-out-alt fa-2x"></i>
                 </a>
               </li>
@@ -113,6 +137,7 @@
     <li><a href="/activemembercreation">ACTIVE MEMBER CREATION</a></li>
     <li><a href="/activememberslist">ACTIVE MEMBERS LIST</a></li>
     <li><a href="/activememberbusinessreport">BUSINESS REPORT</a></li>
+    <li><a href="/activememberpayout">PAYOUT LIST</a></li>
 
 
   </ul>  
@@ -169,15 +194,14 @@
 <li class="submenu">
   <a href="#">
     <i class="fas fa-hand-holding-usd"></i>
-    <span>LOAN</span>
+    <span>FEE</span>
     <span class="menu-arrow"></span>
   </a>
   <ul>
-    <li><a href="/loancreation">LOAN CREATION</a></li>
+    <li><a href="/late_fee">LATE FEE</a></li>
     <li><a href="/loanslist">LOANS LIST</a></li>
   </ul>
 </li>
-
 <li class="submenu">
   <a href="#">
     <i class="fas fa-calendar-alt"></i>
@@ -204,6 +228,18 @@
 
 <li class="submenu">
   <a href="#">
+    <i class="fas fa-gift"></i>
+    <span>INCENTIVES</span>
+    <span class="menu-arrow"></span>
+  </a>
+  <ul>
+    <li><a href="/ipp_incentives">IPP INCENTIVES</a></li>
+    <li><a href="/cdpp_incentives">CDPP INCENTIVES</a></li>
+  </ul>
+</li>
+
+<li class="submenu">
+  <a href="#">
     <i class="fas fa-clipboard-list"></i>
     <span>ADMIN REPORT</span> 
     <span class="menu-arrow"></span>
@@ -211,6 +247,24 @@
   <ul>
     <li><a href="/adminreportcreate">ADMIN REPORT CREATE</a></li>
     <li><a href="/adminreportlist">ADMIN REPORTS LIST</a></li>
+  </ul>
+</li>
+
+<li class="submenu">
+  <a href="#">
+    <i class="fas fa-cog"></i>
+    <span>SETTINGS</span> 
+    <span class="menu-arrow"></span>
+  </a>
+  <ul>
+    <li class="submenu" ><a href="#">PLAN SETTINGS<span class="menu-arrow"></span></a>
+      <ul>
+        <li><a href="/plansettings/ipp">IPP</a></li>
+        <li><a href="/plansettings/cdpp">CDPP</a></li>
+      </ul>
+    </li>
+  
+    <li><a href="/commissionsettings">COMMISSION SETTINGS</a></li>
   </ul>
 </li>
                   <!-- <li class="submenu"><a href="#"><i class="fa fa-list-alt"></i><span>TRANSACTION</span><span class="menu-arrow"></span></a><ul><li><a href="search-discharge.php">Discharge Summary</a></li></ul></li> -->

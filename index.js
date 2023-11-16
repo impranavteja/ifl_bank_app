@@ -1075,10 +1075,293 @@ else{
 }
 });
 
+app.get('/showactivememberbusinessreport', (req, res) => {
+
+  if(req.session.admin){
+   res.render('admin/show_active_member_business_report.ejs');
+  }
+  else{
+    res.redirect("/adminlogin");
+  }
+});
+
+
+app.get('/activememberpayout', async (req, res) => {
+
+  if(req.session.admin){
+    const branchdetails = await getBranches();
+   res.render('admin/active_member_payout.ejs',{branchdetails:branchdetails});
+  }
+  else{
+    res.redirect("/adminlogin");
+  }
+});
+
+app.get('/activememberpayoutlist', async (req, res) => {
+
+  if(req.session.admin){
+    const branchdetails = await getBranches();
+    const payoutlist =[
+      {
+          "id": "051022235",
+          "name": "₹625000.00",
+          "amount": "₹500000.00",
+          "spot": "₹500000.00",
+          "processing": "₹0.00",
+          "total": "₹500000.00"
+      }
+  ]
+  
+   res.render('admin/active_member_payout_list.ejs',{branchdetails:branchdetails,payoutlist:payoutlist});
+  }
+  else{
+    res.redirect("/adminlogin");
+  }
+});
+
+
+// ==========================SETTINGS====================================
+
+app.get('/plansettings/ipp',(req,res)=>{  
+  
+  if(1)
+  {
+    try{
+
+      conn.query('SELECT * FROM  ipp_amounts ORDER BY  category_code', async (err, data) => {
+        if (err) throw err;
+        console.log(data);
+        res.render('admin/plansettings.ejs',{plandetails: data});
+    
+    })
+  }
+    catch(error){
+      console.error(error);
+      res.status(500).send('Error: User not inserted');
+    }
+  }
+  else{
+    res.redirect("/adminlogin");
+  }
+  
+});
+
+app.get('/commissionsettings',(req,res)=>{  
+  
+  if(req.session.admin)
+  {
+    res.render('admin/plansettings.ejs');
+  }
+  else{
+    res.redirect("/adminlogin");
+  }
+  
+});
+
+app.get('/ipp_incentives',(req,res)=>{
+  if(req.session.admin)
+  {
+    conn.query('SELECT * FROM ipp_incentives ', async (err, ippData) => {
+      if (err) {
+        console.error('Error querying Users table:', err);
+        res.status(500).send('Error querying database');
+        return;
+      }
+
+      res.render('admin/ipp_incentives.ejs', { ipp_incentives: ippData });
+
+  })
+}
+  else{
+    res.redirect("/adminlogin");
+  }
+}
+);
+
+app.get('/ipp_incentives_edit',(req,res)=>{
+    if(req.session.admin)
+    {
+      const rank_code = req.query.id;
+      conn.query('SELECT * FROM ipp_incentives WHERE rank_code=? ',[rank_code], async (err, ippData) => {
+        if (err) {
+          console.error('Error querying Users table:', err);
+          res.status(500).send('Error querying database');
+          return;
+        }
+        console.log(ippData);
+        res.render('admin/ipp_incentives_edit.ejs', { ipp: ippData });
+  
+    })
+  }
+    else{
+      res.redirect("/adminlogin");
+
+    }
+  })
+
+app.post('/ipp_incentives_edit',(req,res)=>{
+  if(req.session.admin)
+  {
+    try{
+       const rank_code = req.body.rank_code;
+       const tenure = req.body.tenure;
+       const percentage = req.body.percentage;
+      console.log(rank_code,tenure,percentage);
+       conn.query('UPDATE ipp_incentives SET tenure = ?, percentage = ? WHERE rank_code = ?', [tenure, percentage, rank_code], async(err, rows) => {
+        if (err) throw err;
+        console.log(rows);
+        res.redirect('/ipp_incentives');
+       
+       })}
+      
+    catch(error){
+      console.error(error);
+      res.status(500).send('Error: User not inserted');
+    }
+  }
+  else{
+    res.redirect("/adminlogin");
+  }
+})
+
+
+app.get('/cdpp_incentives',(req,res)=>{
+  if(req.session.admin)
+  {
+    conn.query('SELECT * FROM cdpp_incentives ', async (err, cdppData) => {
+      if (err) {
+        console.error('Error querying Users table:', err);
+        res.status(500).send('Error querying database');
+        return;
+      }
+      console.log(cdppData)
+      res.render('admin/cdpp_incentives.ejs', { cdpp_incentives: cdppData });
+
+  })
+}
+  else{
+    res.redirect("/adminlogin");
+  }
+}
+);
+
+app.get('/cdpp_incentives_edit',(req,res)=>{
+    if(req.session.admin)
+    {
+      const rank_code = req.query.id;
+      conn.query('SELECT * FROM cdpp_incentives WHERE rank_code=? ',[rank_code], async (err, cdppData) => {
+        if (err) {
+          console.error('Error querying Users table:', err);
+          res.status(500).send('Error querying database');
+          return;
+        }
+        // console.log(cdppData);
+        res.render('admin/cdpp_incentives_edit.ejs', { cdpp: cdppData });
+  
+    })
+  }
+    else{
+      res.redirect("/adminlogin");
+
+    }
+  })
+
+app.post('/cdpp_incentives_edit',(req,res)=>{
+  if(req.session.admin)
+  {
+    try{
+       const rank_code = req.body.rank_code;
+       const cdpp75 = req.body.cdpp75;
+       const cdpp84 = req.body.cdpp84;
+       const cdpp108 = req.body.cdpp108;
+
+      console.log(rank_code,tenure,percentage);
+       conn.query('UPDATE cdpp_incentives SET CDPP_75 = ?, CDPP_84 = ?, CDPP_108 = ? WHERE rank_code = ?', [cdpp75, cdpp84, cdpp108], async(err, rows) => {
+        if (err) throw err;
+        // console.log(rows);
+        res.redirect('/cdpp_incentives');
+       
+       })}
+      
+    catch(error){
+      console.error(error);
+      res.status(500).send('Error: User not inserted');
+    }
+  }
+  else{
+    res.redirect("/adminlogin");
+  }
+})
+
+
+
+
+app.get('/late_fee',(req,res)=>{
+  
+  if(req.session.admin)
+  {
+     conn.query('SELECT * FROM latefees ', async (err, latefeeData) => {
+      if (err)  throw err;
+      console.log(latefeeData);
+      res.render('admin/late_fee.ejs', { latefee: latefeeData });
+     })
+  }
+  else{
+    res.redirect("/adminlogin");
+  }
+  
+});
+
+app.get('/late_fee_edit',(req,res)=>{
+  if(req.session.admin )
+  {
+    const category_code = req.query.id;
+    conn.query('SELECT * FROM latefees WHERE category_code=? ',[category_code], async (err, latefeeData) => {
+      if (err) {
+        console.error('Error querying Users table:', err);
+        res.status(500).send('Error querying database');
+        return;
+      }
+      console.log(latefeeData);
+      res.render('admin/late_fee_edit.ejs', { latefee: latefeeData });
+
+  })
+  }
+  else{
+    res.redirect("/adminlogin");
+  
+  }
+})
+
+app.post('/late_fee_edit',(req,res)=>{
+  if(req.session.admin)
+  {
+    try{
+       const category_code = req.body.category_code;
+       const late_fee = req.body.late_fee;
+      console.log(category_code,late_fee);
+       conn.query('UPDATE latefees SET late_fee = ? WHERE delayed_days = ?', [late_fee, category_code], async(err, rows) => {
+        if (err) throw err;
+        console.log(rows);  
+        res.redirect('/late_fee');
+       
+       })}
+      
+    catch(error){
+      console.error(error);
+      res.status(500).send('Error: User not inserted');
+    }
+  }
+  else{
+    res.redirect("/adminlogin");
+  }
+})
 
 app.get('/test/bond',(req,res)=>{
-  res.render('test/index.ejs');
+  res.render('test/invoice.ejs');
 });
+
+
 
 
 app.listen(5000, function () {
