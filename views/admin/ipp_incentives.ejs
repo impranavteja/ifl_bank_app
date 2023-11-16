@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <title>Branch Details</title>
+    <title>IPP Incentives </title>
   
        <!-- Favicon -->
     <link rel="shortcut icon" href="assets/img/fav-logo.png">
@@ -25,12 +25,12 @@
           <div class="page-header">
             <div class="row">
               <div class="col-sm-12">
-                <h3 class="page-title"> BRANCH DETAILS</h3>
+                <h3 class="page-title"> IPP Incentives DETAILS</h3>
                 <ul class="breadcrumb">
                   <li class="breadcrumb-item">
                     <a href="/branchdashboard">Dashboard</a>
                   </li>
-                  <li class="breadcrumb-item active">Branch Details List</li>
+                  <li class="breadcrumb-item active">IPP Incentives Details List</li>
                 </ul>
               </div>
             </div>
@@ -44,7 +44,7 @@
           <div class="page-header">
             <div class="row align-items-center">
               <div class="col">
-                <h3 class="page-title"><b>Branches</b></h3>
+                <h3 class="page-title"><b>IPP Incentives</b></h3>
               </div>
               <div class="col-auto text-end float-end ms-auto download-grp">
                 <button  class="btn btn-outline-primary me-2" onclick="exporttoxl();"><i class="fas fa-download"></i> Download</button>
@@ -57,37 +57,25 @@
             <table class="table table-hover table-center mb-0" id="branchdetails">
               <thead>
                 <tr>
-                  <th>Branch Code</th>
-                  <th>Branch Name</th>
-                  <th>Address</th>
-                  <th>Manager</th>
-                  <th>District</th>
-                  <th>State</th>
-                  <th>Pincode</th>
-                  <th>Phone</th>
-                  <th>Mobile</th>
+                  <th>Rank Code</th>
+                  <th>Tenure </th>
+                  <th>Percentage</th>
                   <th class="text-end">Action</th>
                 </tr>
               </thead>
               <tbody> 
 
-                <% Branchdetails.forEach(function(branch) { %>
+                <% ipp_incentives.forEach(function(ipp) { %>
             
                   <tr>
-                    <td><%= branch.branch_id %></td>
-                    <td><%= branch.branch_name %></td>
-                    <td><%= branch.branch_address %></td>
-                    <td><%= branch.branch_manager %></td>
-                    <td><%= branch.branch_district %></td>
-                    <td><%= branch.branch_state %></td>
-                    <td><%= branch.branch_pincode %></td>
-                    <td><%= branch.branch_phone %></td> 
-                    <td><%= branch.branch_mobile %></td>
+                    <td><%= ipp.rank_code %></td>
+                    <td><%= ipp.tenure %></td>
+                    <td><%= ipp.percentage %></td>
             
                     <!-- Action buttons -->
                     <td class="text-end">
                         <div class="actions">
-                            <a href="/branchedit?id=<%= branch.branch_id%>" class="btn btn-sm bg-success-light me-2">
+                            <a href="/ipp_incentives_edit?id=<%= ipp.rank_code%>" class="btn btn-sm bg-success-light me-2">
                                 <i class="fas fa-pen"></i>
                               </a>
                         </div>

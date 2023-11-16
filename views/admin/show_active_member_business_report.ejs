@@ -3,9 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <title>Branch Details</title>
-  
-       <!-- Favicon -->
+    <title>Business Report</title>
+    <!-- Favicon -->
     <link rel="shortcut icon" href="assets/img/fav-logo.png">
     <!-- Fontfamily -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;1,400&display=swap">
@@ -25,12 +24,12 @@
           <div class="page-header">
             <div class="row">
               <div class="col-sm-12">
-                <h3 class="page-title"> BRANCH DETAILS</h3>
+                <!-- <h3 class="page-title"> Business</h3> -->
                 <ul class="breadcrumb">
                   <li class="breadcrumb-item">
                     <a href="/branchdashboard">Dashboard</a>
                   </li>
-                  <li class="breadcrumb-item active">Branch Details List</li>
+                  <li class="breadcrumb-item active">Business Report</li>
                 </ul>
               </div>
             </div>
@@ -38,68 +37,63 @@
           <!-- /Page Header -->
           <!-- Overview Section -->
           <div class="row"> 
-       <div class="col-sm-12"> 
+       <div class="col-sm-12" > 
             <div class="card card-table"> 
                 <div class="card-body">     
           <div class="page-header">
             <div class="row align-items-center">
               <div class="col">
-                <h3 class="page-title"><b>Branches</b></h3>
+                <h3 class="page-title"><b>Business Report</b></h3>
               </div>
               <div class="col-auto text-end float-end ms-auto download-grp">
-                <button  class="btn btn-outline-primary me-2" onclick="exporttoxl();"><i class="fas fa-download"></i> Download</button>
+                <button  class="btn btn-outline-primary me-2" onclick="printdoc()"><i class="fas fa-print"></i> Print</button>
+        
+                <button  class="btn btn-outline-primary me-2" onclick="convertopdf()"><i class="fas fa-download"></i> Download</button>
                 <a href="/branchcreation" class="btn btn-primary"><i class="fas fa-plus"></i></a>
               </div>
             </div>
           </div>
-      
+         <div id="content"> 
+          <style> .report-header { text-align: center; margin-bottom: 20px; } .report-header h3 { margin-top: 0; margin-bottom: 5px; } table { width: 100%; border-collapse: collapse; } table thead th { background-color: #f2f2f2; border: 1px solid #ddd; padding: 8px; } table td { border: 1px solid #ddd; padding: 8px; } table tfoot td { font-weight: bold; } </style>
           <div class="table-responsive">
-            <table class="table table-hover table-center mb-0" id="branchdetails">
-              <thead>
+            <div class="report-header"> <h3><b>IFL GREEN PRODUCER COMPANY LIMITED</b></h3> <p>Plan Wise Team Collection For Branch:<b>ALL</b>
+            </p> <p>Advisor Code Name:<b> P.SURYAKIRAN</b>
+            </p> <p>Dated: 01-Sep-2023 To: 30-Sep-2023</p> 
+        </div> 
+        <table>
+             <thead> 
+                    
                 <tr>
-                  <th>Branch Code</th>
-                  <th>Branch Name</th>
-                  <th>Address</th>
-                  <th>Manager</th>
-                  <th>District</th>
-                  <th>State</th>
-                  <th>Pincode</th>
-                  <th>Phone</th>
-                  <th>Mobile</th>
-                  <th class="text-end">Action</th>
-                </tr>
-              </thead>
-              <tbody> 
-
-                <% Branchdetails.forEach(function(branch) { %>
+                     <th>Plan</th>     
+                      <th>Collection (Fresh)</th>
+                       <th>Quota(Fresh)</th> 
+                         <th>Collection(First)</th>
+                         <th>Quota(First)</th>
+                          <th>Second</th> 
+                          <th>Third</th> 
+                          <th>Fourth</th>
+                           <th>Fifth</th>
+                            <th>Sixth</th>
+                         </tr> 
+                    </thead>
+                    
+                <tbody>
+                     <tr>
+                         <td>CDPP-108</td>
+                          <td>₹625000.00</td>
+                           <td>₹500000.00</td> 
+                           <td>₹0.00</td>
+                            <td>₹0.00</td>
+                             <td>₹0.00</td> 
+                             <td>₹0.00</td> 
+                             <td>₹0.00</td>
+                              <td>₹0.00</td> 
+                              <td>₹0.00</td> 
+                    </tr>
+            </tbody>
             
-                  <tr>
-                    <td><%= branch.branch_id %></td>
-                    <td><%= branch.branch_name %></td>
-                    <td><%= branch.branch_address %></td>
-                    <td><%= branch.branch_manager %></td>
-                    <td><%= branch.branch_district %></td>
-                    <td><%= branch.branch_state %></td>
-                    <td><%= branch.branch_pincode %></td>
-                    <td><%= branch.branch_phone %></td> 
-                    <td><%= branch.branch_mobile %></td>
             
-                    <!-- Action buttons -->
-                    <td class="text-end">
-                        <div class="actions">
-                            <a href="/branchedit?id=<%= branch.branch_id%>" class="btn btn-sm bg-success-light me-2">
-                                <i class="fas fa-pen"></i>
-                              </a>
-                        </div>
-                      </td>
-    
-            
-                  </tr>
-            
-                <% }) %>
-            
-              </tbody>
-            </table>
+            <tfoot> <tr> <th>TOTAL BUSINESS</th> <td>₹totalBusiness </td> <th>TOTAL QUOTA</th> <td>₹    totalQuota </td> </tr> </tfoot> </table>       
           </div>
       
         </div>
@@ -108,6 +102,7 @@
     </div> 
 
 </div>
+          </div>
         
         
         </div>
@@ -115,6 +110,19 @@
 
           <!-- /Main Wrapper -->
           <!-- jQuery -->
+          <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+<script>
+
+function convertopdf() {
+    doc.fromHTML($('#content').html(), 15, 15, {
+        'width': 170,
+            'elementHandlers': specialElementHandlers
+    });
+    doc.save('sample-file.pdf');
+};
+
+</script>
+<script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
           <script src="assets/js/jquery-3.6.0.min.js"></script>
           <!-- Bootstrap Core JS -->
           <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
